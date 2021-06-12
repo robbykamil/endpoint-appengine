@@ -1,0 +1,33 @@
+swagger: "2.0"
+
+info:
+  description: "Isyaratku Cloud Endpoint API"
+  title: "Endpoint Isyaratku"
+  version: "1.0.0"
+
+host: "YOUR-PROJECT-ID.appspot.com"
+
+schemes: 
+  - https
+
+paths:
+  /server
+    post:
+      summary: return the image
+      description: Android ask the server to return image based on what the request
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: huruf
+          type: string
+      responses: 
+        200:
+          description: OK
+          content:		#Response body
+            image/png:		#Media type
+              schema:
+                type: string	#Data type
+                format: binary
+        400:
+          description: Unexpected error
