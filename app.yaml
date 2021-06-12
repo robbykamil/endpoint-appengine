@@ -1,0 +1,20 @@
+#app.yaml
+
+runtime: python37
+api_version: 1
+
+endpoints_api_service:
+  name: ENDPOINTS-SERVICE-NAME
+  rollout_strategy: managed
+
+env_variables:
+  CLOUD_STORAGE_BUCKET: sign-image
+
+handlers:
+- url: /
+  script: main.app
+
+- url: /([^/]*[^/\d])\d*\.png)$
+  static_files: Colored/
+  upload: Colored/[^/]*[^/\d])\d*\.png$
+
